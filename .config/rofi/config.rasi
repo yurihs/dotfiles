@@ -1,0 +1,67 @@
+configuration {
+	terminal: "alacritty";
+	sorting-method: "fzf";
+	matching: "fuzzy";
+	scroll-method: 1;
+}
+
+window {
+    font: "Hack 12";
+    padding: 3;
+    background-color: #ebedef;
+}
+
+mainbox {
+    background-color: inherit;
+    spacing: 3;
+}
+
+inputbar {
+    background-color: inherit;
+    children: [entry, prompt];
+}
+
+prompt {
+    background-color: inherit;
+    padding: 6;
+}
+
+entry {
+    padding: 6;
+}
+
+message {
+    background-color: inherit;
+    text-color: #454a55;
+    padding: 10;
+}
+
+
+listview {
+    background-color: inherit;
+    scrollbar: false;
+    lines: 12;
+}
+
+element {
+    background-color: inherit;
+    text-color: #454a55;
+    highlight: bold #000000;
+    padding: 6;
+
+}
+
+element selected {
+    background-color: #c7cbd1;
+}
+
+error-message {
+    background-color: inherit;
+    padding: 20;
+    text-color: #454a55;
+}
+
+textbox {
+    background-color: inherit;
+    text-color: inherit;
+}

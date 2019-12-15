@@ -1,0 +1,87 @@
+window:
+  padding:
+    x: 10
+    y: 8
+  dynamic_padding: true
+  decorations: none
+
+scrolling:
+  history: 100000
+  multiplier: 3
+  auto_scroll: false
+
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+  italic:
+    family: Hack Nerd Font
+    style: Italic
+  bold_italic:
+    family: Hack Nerd FOnt
+    style: Bold Italic
+  size: 10.0
+
+colors:
+  primary:
+    background: '0x272822'
+    foreground: '0xf8f8f2'
+  cursor:
+    text: '0x272822'
+    cursor: '0xf5f4f1'
+  selection:
+    text: '0x272822'
+    background: '0xf5f4f1'
+  normal:
+    black:   '0x272822'
+    red:     '0xf92672'
+    green:   '0xa6e22e'
+    yellow:  '0xf4bf75'
+    blue:    '0x66d9ef'
+    magenta: '0xae81ff'
+    cyan:    '0xa1efe4'
+    white:   '0xf9f8f5'
+
+visual_bell:
+  animation: EaseOutExpo
+  duration: 150
+  color: '0x272822'
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+
+live_config_reload: true
+
+mouse:
+  url:
+    modifiers: Control
+
+mouse_bindings: []
+
+key_bindings:
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: Paste,                    action: Paste                            }
+  - { key: Copy,                     action: Copy                             }
+  - { key: L,         mods: Control, action: ClearLogNotice                   }
+  - { key: L,         mods: Control, chars: "\x0c"                            }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+
+  - { key: Insert,   mods: Shift,         action: ReceiveChar   }
+  - { key: Return,   mods: Alt,           action: ReceiveChar   }
+  - { key: Delete,   mods: Control,       chars: "\x1b[3;5~" }
+
+alt_send_esc: true
+

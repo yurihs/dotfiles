@@ -1,0 +1,151 @@
+[colors]
+background = #272822
+background-alt = #444
+foreground = #f9f8f5
+foreground-alt = #f9f8f5
+primary = #66d9ef
+secondary = #a1efe4
+alert = #f92672
+good = #a6e2ee
+
+[bar/one]
+width = 100%
+height = 29
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #ff0000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Hack Nerd Font:style=Regular:size=9;1"
+
+modules-left = i3
+modules-center =
+modules-right = memory cpu cpu_temperature gpu_temperature pulseaudio date
+
+tray-position = right
+tray-padding = 2
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 3
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 3
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${colors.background-alt}
+label-visible-underline = ${colors.primary}
+label-visible-padding = 3
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <ramp-coreload>
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <label>
+label = %gb_used% used
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%Y-%m-%d "
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date%%time%
+label-font = 3
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+
+format-volume = %{A3:pavucontrol:}<label-volume>%{A}
+
+label-volume = %percentage:3%%
+
+format-muted = %{A3:pavucontrol:}<label-muted>%{A}
+
+label-muted = "mute"
+label-muted-foreground = #666
+
+label-volume-font = 3
+label-muted-font = 3
+
+
+[module/cpu_temperature]
+type = internal/temperature
+
+hwmon-path = /sys/devices/platform/eeepc-wmi/hwmon/hwmon1/subsystem/hwmon0/temp1_input
+warn-temperature = 65
+
+format =
+
+format-warn = <label-warn>
+format-warn-underline = ${colors.alert}
+
+label = CPU %temperature-c%
+label-warn = CPU %temperature-c%
+
+
+[module/gpu_temperature]
+type = internal/temperature
+
+hwmon-path = /sys/devices/platform/eeepc-wmi/hwmon/hwmon1/subsystem/hwmon2/temp1_input
+warn-temperature = 65
+
+format =
+
+format-warn = <label-warn>
+format-warn-underline = ${colors.alert}
+
+label = GPU %temperature-c%
+label-warn = GPU %temperature-c%
+
+[settings]
+screenchange-reload = true
