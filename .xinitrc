@@ -38,6 +38,9 @@ xmodmap -e 'keycode 78='
 # Activate screensaver after 30 minutes
 xset s 1800
 
+# Start ssh-agent
+eval $(ssh-agent)
+
 # Start the window manager!
 exec i3
 
