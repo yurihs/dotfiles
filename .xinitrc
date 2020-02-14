@@ -38,6 +38,9 @@ xmodmap -e 'keycode 78='
 # Activate screensaver after 30 minutes
 xset s 1800
 
+# No tearing please
+xrandr --output DVI-D-0 --set TearFree on
+
 # Start ssh-agent
 eval $(ssh-agent)
 
