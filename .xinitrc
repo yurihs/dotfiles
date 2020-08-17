@@ -38,6 +38,14 @@ xmodmap -e 'keycode 78='
 # Activate screensaver after 30 minutes
 xset s 1800
 
+## 75Hz
+xrandr --newmode "1920x1080_75.00_rb2"  167.85  1920 1928 1960 2000  1080 1105 1113 1119 +hsync -vsync
+xrandr --addmode DisplayPort-0 "1920x1080_75.00_rb2"
+xrandr --output DisplayPort-0 --primary --mode "1920x1080_75.00_rb2" --pos 0x0
+
+## Second display positioning
+xrandr --output DVI-D-0 --mode 1440x900 --pos 1920x180
+
 # No tearing please
 xrandr --output DVI-D-0 --set TearFree on
 
