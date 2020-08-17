@@ -68,6 +68,8 @@ alias df="df -h"
 alias free="free -h"
 alias grep="grep --color=auto"
 alias history="fc -li"
+alias ssh="TERM=xterm ssh"
+alias ip="ip --color"
 
 # History
 # ======================================
