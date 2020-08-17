@@ -9,10 +9,11 @@ set $up k
 set $right l
 
 set $term alacritty
+set $locker lockscreen
 
 font pango:Hack Nerd Font 8
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 272822 --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $locker
 
 # Shortcuts
 # ======================================
@@ -30,7 +31,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+s exec rofi -modi ssh -show ssh
 bindsym $mod+d exec rofi -modi run -show run
 bindsym $mod+c exec rofi -modi calc -show calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel -ib"
-bindsym $mod+Ctrl+l exec i3lock -c 272822 --nofork
+bindsym $mod+Ctrl+l exec $locker
 bindsym Print exec scrot
 bindsym --release Shift+Print exec scrot --select
 

@@ -1,0 +1,34 @@
+#!/usr/bin/sh
+
+exec multilockscreen \
+--lock \
+-- \
+--force-clock \
+--veriftext "" \
+--wrongtext "" \
+--noinputtext "" \
+--locktext "" \
+--lockfailedtext "" \
+--insidecolor 00000000 \
+--insidevercolor 00000000 \
+--insidewrongcolor 00000000 \
+--separatorcolor 00000000 \
+--keyhlcolor df7f3388 \
+--bshlcolor c23a2788 \
+--ringcolor 0000000f \
+--ringvercolor df7f3388 \
+--ringwrongcolor c23a27cc \
+--indpos "960:540" \
+--radius 150 \
+--ring-width 6 \
+--timepos "960:200" \
+--timestr "%H:%M" \
+--timecolor ffffffff \
+--time-font "Inter ExtraLight" \
+--timesize 168 \
+--datepos "960:280" \
+--date-align 0 \
+--datestr "Week %-U of %Y" \
+--datecolor ffffffff \
+--date-font "Inter Thin" \
+--datesize 38
