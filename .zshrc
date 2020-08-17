@@ -26,6 +26,16 @@ compinit
 # Case insensitive
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
+
+# Automatically quote pasted URLs
+# ======================================
+
+autoload -U bracketed-paste-magic
+autoload -U url-quote-magic
+zle -N bracketed-paste bracketed-paste-magic
+zle -N self-insert url-quote-magic
+
+
 # Key bindings
 # ======================================
 
