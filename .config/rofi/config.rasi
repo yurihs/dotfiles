@@ -3,6 +3,7 @@ configuration {
 	sorting-method: "fzf";
 	matching: "fuzzy";
 	scroll-method: 1;
+	ssh-command: "{terminal} -e env TERM=xterm {ssh-client} {host}";
 }
 
 window {
