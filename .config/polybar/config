@@ -12,6 +12,7 @@ good = #a6e2ee
 width = 100%
 height = 29
 fixed-center = false
+monitor = DisplayPort-0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -41,6 +42,7 @@ cursor-scroll = ns-resize
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
