@@ -177,3 +177,5 @@ exec udiskie
 # Brightness bar
 exec mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
 
+# Restore wallpaper
+exec --no-startup-id ~/.fehgb
