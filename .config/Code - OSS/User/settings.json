@@ -64,6 +64,4 @@
     "workbench.editor.labelFormat": "medium",
     "python.experiments.enabled": false,
     "python.linting.enabled": false,
-    "editor.minimap.enabled": false
 }
-
