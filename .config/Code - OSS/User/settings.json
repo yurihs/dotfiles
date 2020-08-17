@@ -58,7 +58,7 @@
     "workbench.iconTheme": "ayu",
     "editor.renderLineHighlight": "gutter",
     "editor.occurrencesHighlight": false,
-    "python.venvPath": "~/.cache/pypoetry/virtualenvs",
+    "python.venvPath": "/home/yurihs/.cache/pypoetry/virtualenvs",
     "window.zoomLevel": 0,
     "debug.openDebug": "neverOpen",
     "workbench.editor.labelFormat": "medium",
