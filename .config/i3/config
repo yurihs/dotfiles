@@ -134,6 +134,21 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
+mode "system" {
+	# Brightness
+    bindsym Prior exec brillo -qA 4; exec brillo -G | tee /tmp/xobpipe
+    bindsym Next exec brillo -qU 4; exec brillo -G | tee /tmp/xobpipe
+
+    bindsym XF86Sleep mode "default"; exec systemctl suspend
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym XF86PowerOff mode "default"
+}
+
+bindsym XF86PowerOff mode "system"
+
+
 # Bar
 # ======================================
 
