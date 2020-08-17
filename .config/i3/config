@@ -152,13 +152,20 @@ bindsym XF86PowerOff mode "system"
 # Bar
 # ======================================
 
-exec_always $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Styles
 # ======================================
 
 default_border pixel 1
 hide_edge_borders smart
+
+# Firefox PiP mode
+for_window [window_role="PictureInPicture"] border none
+
+# JetBrains dialogs
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
 
 # Startup
