@@ -168,6 +168,9 @@ for_window [window_role="PictureInPicture"] border none
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
+# Anki dialogs
+for_window [class="Anki" title="Add"] floating enable
+for_window [class="Anki" title="Browse"] floating enable
 
 # Startup
 # ======================================
