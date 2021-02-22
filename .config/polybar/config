@@ -30,7 +30,7 @@ font-0 = "Hack Nerd Font:style=Regular:size=9;1"
 
 modules-left = i3
 modules-center =
-modules-right = memory cpu cpu_temperature gpu_temperature pulseaudio date
+modules-right = memory cpu cpu_temperature gpu_temperature date
 
 tray-position = right
 tray-padding = 2
@@ -107,11 +107,11 @@ type = internal/pulseaudio
 
 use-ui-max = false
 
-format-volume = %{A3:pavucontrol:}<label-volume>%{A}
+format-volume = %{A3:pavucontrol & disown:}<label-volume>%{A}
 
 label-volume = %percentage:3%%
 
-format-muted = %{A3:pavucontrol:}<label-muted>%{A}
+format-muted = %{A3:pavucontrol & disown:}<label-muted>%{A}
 
 label-muted = "mute"
 label-muted-foreground = #666
