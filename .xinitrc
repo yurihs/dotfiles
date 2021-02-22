@@ -29,8 +29,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 
-# Set keyboard layout, map caps lock to ctrl
-setxkbmap br -option caps:ctrl_modifier
+# Set keyboard layout, map caps lock to ctrl, map simultaneous shift to caps
+setxkbmap br -option ctrl:nocaps -option shift:both_capslock
 
 # Disable scroll lock
 xmodmap -e 'keycode 78='
