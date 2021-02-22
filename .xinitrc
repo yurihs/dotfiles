@@ -35,6 +35,11 @@ setxkbmap br -option ctrl:nocaps -option shift:both_capslock
 # Disable scroll lock
 xmodmap -e 'keycode 78='
 
+xbindkeys
+
+# My graphics tablet is upside down :)
+xsetwacom --set "Wacom Bamboo One S Pen stylus" rotate half || true
+
 # Activate screensaver after 30 minutes
 xset s 1800
 
