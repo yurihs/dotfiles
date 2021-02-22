@@ -1,2 +1,2 @@
-PATH="$HOME/.local/bin:$PATH:$HOME/.node_modules/bin"
+PATH="$HOME/.poetry/bin:$HOME/.local/bin:$PATH:$HOME/.node_modules/bin"
 
