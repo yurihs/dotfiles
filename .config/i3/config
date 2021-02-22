@@ -41,9 +41,9 @@ bindsym Ctrl+q exec true
 # Function keys
 # --------------------------------------
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulsey up 3 > /tmp/xobpipe
+bindsym XF86AudioLowerVolume exec --no-startup-id pulsey down 3 > /tmp/xobpipe
+bindsym XF86AudioMute exec --no-startup-id pulsey mute > /tmp/xobpipe
 
 # Layout
 # --------------------------------------
