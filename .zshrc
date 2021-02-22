@@ -95,3 +95,5 @@ ytmusic() {
 }
 source /usr/bin/virtualenvwrapper_lazy.sh
 
+eval "$(pyenv init -)"
+
