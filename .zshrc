@@ -90,5 +90,8 @@ setopt hist_verify
 # Misc scripts
 # ======================================
 
+ytmusic() {
+    mpv --ytdl --ytdl-format=bestaudio --no-video "ytdl://ytsearch1:$1" "${@:2}"
+}
 source /usr/bin/virtualenvwrapper_lazy.sh
 
