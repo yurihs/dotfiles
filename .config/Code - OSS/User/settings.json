@@ -24,7 +24,6 @@
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "eslint.autoFixOnSave": true,
     "vetur.format.defaultFormatter.js": "prettier-eslint",
     "files.exclude": {
         "**/__pycache__/": true,
@@ -64,4 +63,9 @@
     "workbench.editor.labelFormat": "medium",
     "python.experiments.enabled": false,
     "python.linting.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.minimap.enabled": false,
+    "editor.letterSpacing": -0.45
 }
