@@ -4,6 +4,10 @@ configuration {
 	matching: "fuzzy";
 	scroll-method: 1;
 	ssh-command: "{terminal} -e env TERM=xterm {ssh-client} {host}";
+	kb-move-front: "Home";
+	kb-move-end: "End";
+	kb-row-first: "";
+	kb-row-last: "";
 }
 
 window {
