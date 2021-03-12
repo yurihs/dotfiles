@@ -8,6 +8,8 @@ configuration {
 	kb-move-end: "End";
 	kb-row-first: "";
 	kb-row-last: "";
+	width: 30;
+	lines: 5;
 }
 
 window {
@@ -45,7 +47,6 @@ message {
 listview {
     background-color: inherit;
     scrollbar: false;
-    lines: 12;
 }
 
 element {
