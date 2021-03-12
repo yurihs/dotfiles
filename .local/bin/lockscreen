@@ -13,13 +13,13 @@ exec multilockscreen \
 --insidevercolor 00000000 \
 --insidewrongcolor 00000000 \
 --separatorcolor 00000000 \
---keyhlcolor df7f3388 \
+--keyhlcolor 9c948c99 \
 --bshlcolor c23a2788 \
 --ringcolor 0000000f \
---ringvercolor df7f3388 \
+--ringvercolor 9c948c99 \
 --ringwrongcolor c23a27cc \
 --indpos "960:540" \
---radius 150 \
+--radius 203 \
 --ring-width 6 \
 --timepos "960:200" \
 --timestr "%H:%M" \
