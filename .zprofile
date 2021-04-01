@@ -7,7 +7,7 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export npm_config_prefix=$HOME/.node_modules
 
 # Start Xorg on tty1
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
 fi
 
