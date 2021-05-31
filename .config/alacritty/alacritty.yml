@@ -55,9 +55,14 @@ selection:
 
 live_config_reload: true
 
-mouse:
-  url:
-    modifiers: Control
+hints:
+  enabled:
+    - regex: "(https:|http:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+      command: xdg-open
+      post_processing: true
+      mouse:
+        enabled: true
+        mods: Control
 
 mouse_bindings: []
 
@@ -76,6 +81,9 @@ key_bindings:
   - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
+  - { key: Space,    mods: Shift|Control, mode: ~Search,     action: ReceiveChar }
+  - { key: F,        mods: Control|Shift, mode: ~Search,     action: ReceiveChar }
+  - { key: B,        mods: Control|Shift, mode: ~Search,     action: ReceiveChar }
   - { key: Insert,   mods: Shift,         action: ReceiveChar   }
   - { key: Return,   mods: Alt,           action: ReceiveChar   }
   - { key: Delete,   mods: Control,       chars: "\x1b[3;5~" }
