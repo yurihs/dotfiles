@@ -185,5 +185,8 @@ exec --no-startup-id udiskie
 # Brightness bar
 exec --no-startup-id mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
 
+# Break timer
+exec --no-startup-id safeeyes -e
+
 # Restore wallpaper
 exec --no-startup-id ~/.fehgb
