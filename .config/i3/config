@@ -179,11 +179,11 @@ for_window [class="flameshot" title="flameshot"] sticky enable
 # Startup
 # ======================================
 
-exec dunst
-exec udiskie
+exec --no-startup-id dunst
+exec --no-startup-id udiskie
 
 # Brightness bar
-exec mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
+exec --no-startup-id mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
 
 # Restore wallpaper
 exec --no-startup-id ~/.fehgb
