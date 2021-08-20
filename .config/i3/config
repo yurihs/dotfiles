@@ -190,7 +190,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
 
 # Break timer
-exec --no-startup-id safeeyes -e
+exec --no-startup-id stretchly
 
 # Restore wallpaper
 exec --no-startup-id ~/.fehgb
