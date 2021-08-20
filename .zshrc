@@ -70,6 +70,7 @@ alias grep="grep --color=auto"
 alias history="fc -li"
 alias ssh="TERM=xterm ssh"
 alias ip="ip --color"
+alias vim="nvim"
 
 # History
 # ======================================
