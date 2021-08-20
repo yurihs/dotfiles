@@ -4,31 +4,31 @@ exec multilockscreen \
 --lock \
 -- \
 --force-clock \
---veriftext "" \
---wrongtext "" \
---noinputtext "" \
---locktext "" \
---lockfailedtext "" \
---insidecolor 00000000 \
---insidevercolor 00000000 \
---insidewrongcolor 00000000 \
---separatorcolor 00000000 \
---keyhlcolor 9c948c99 \
---bshlcolor c23a2788 \
---ringcolor 0000000f \
---ringvercolor 9c948c99 \
---ringwrongcolor c23a27cc \
---indpos "960:540" \
+--verif-text "" \
+--wrong-text "" \
+--noinput-text "" \
+--lock-text "" \
+--lockfailed-text "" \
+--inside-color 00000000 \
+--insidever-color 00000000 \
+--insidewrong-color 00000000 \
+--separator-color 00000000 \
+--keyhl-color 9c948c99 \
+--bshl-color c23a2788 \
+--ring-color 0000000f \
+--ringver-color 9c948c99 \
+--ringwrong-color c23a27cc \
+--ind-pos "960:540" \
 --radius 203 \
 --ring-width 6 \
---timepos "960:200" \
---timestr "%H:%M" \
---timecolor ffffffff \
+--time-pos "960:200" \
+--time-str "%H:%M" \
+--time-color ffffffff \
 --time-font "Inter ExtraLight" \
---timesize 168 \
---datepos "960:280" \
+--time-size 168 \
+--date-pos "960:280" \
 --date-align 0 \
---datestr "Week %-U of %Y" \
---datecolor ffffffff \
+--date-str "Week %-U of %Y" \
+--date-color ffffffff \
 --date-font "Inter Thin" \
---datesize 38
+--date-size 38
