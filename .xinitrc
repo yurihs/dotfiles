@@ -37,6 +37,8 @@ xmodmap -e 'keycode 78='
 
 xbindkeys
 
+xsetroot -solid "#444444"
+
 # My graphics tablet is upside down :)
 xsetwacom --set "Wacom Bamboo One S Pen stylus" rotate half || true
 
