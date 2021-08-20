@@ -41,6 +41,7 @@
       vcs                     # git status
       # =========================[ Line #2 ]=========================
       newline
+      context                 # user@hostname
       prompt_char             # prompt symbol
   )
 
@@ -74,8 +75,7 @@
       # aws_eb_env            # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
       # azure                 # azure account name (https://docs.microsoft.com/en-us/cli/azure)
       # gcloud                # google cloud acccount and project (https://cloud.google.com/)
-      context                 # user@hostname
-      nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
+      # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
       # ranger                  # ranger shell (https://github.com/ranger/ranger)
       # vim_shell               # vim shell indicator (:sh)
       # midnight_commander    # midnight commander shell (https://midnight-commander.org/)
