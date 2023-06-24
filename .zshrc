@@ -99,11 +99,11 @@ setopt hist_verify
 ytmusic() {
     mpv --ytdl --ytdl-format=bestaudio --no-video "ytdl://ytsearch1:$1" "${@:2}"
 }
-source /usr/bin/virtualenvwrapper_lazy.sh
 
 codeclimate() {
 	docker run -it --rm -e CODECLIMATE_CODE="$PWD" -v "$PWD":/code -v /run/user/1000/docker.sock:/var/run/docker.sock -v /tmp/cc:/tmp/cc codeclimate/codeclimate "$@"
 }
 
+# Init pyenv (part 2)
 eval "$(pyenv init -)"
 

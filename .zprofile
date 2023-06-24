@@ -7,6 +7,9 @@ export ANDROID_HOME=$HOME/Android/Sdk
 # Make npm install global packages in the home directory
 export npm_config_prefix=$HOME/.node_modules
 
+# Init pyenv (part 1)
+eval "$(pyenv init --path)"
+
 # Start Xorg on tty1
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
