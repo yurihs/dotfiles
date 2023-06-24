@@ -34,6 +34,7 @@ setxkbmap -layout us -variant intl -option ctrl:nocaps,shift:both_capslock
 xbindkeys
 
 xsetroot -solid "#444444"
+~/.fehbg &
 
 # My graphics tablet is upside down :)
 xsetwacom --set "Wacom Bamboo One S Pen stylus" rotate half || true
