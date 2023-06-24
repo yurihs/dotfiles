@@ -32,7 +32,6 @@ set nobackup nowritebackup
 set hidden
 
 set gdefault
-set clipboard=unnamedplus
 
 set scrolloff=1
 " when scrolling horizontally, keep cursor centered
