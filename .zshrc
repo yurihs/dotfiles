@@ -64,6 +64,7 @@ alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias lt="ll -tr"
 alias la="ll -A"
+alias exan="exa -l -snew"
 alias df="df -h"
 alias free="free -h"
 alias grep="grep --color=auto"
@@ -71,6 +72,8 @@ alias history="fc -li"
 alias ssh="TERM=xterm ssh"
 alias ip="ip --color"
 alias vim="nvim"
+alias g="git"
+alias k="kubectl"
 
 # History
 # ======================================
@@ -91,10 +94,16 @@ setopt hist_verify
 # Misc scripts
 # ======================================
 
+. "$HOME/.local/bin/wt";
+
 ytmusic() {
     mpv --ytdl --ytdl-format=bestaudio --no-video "ytdl://ytsearch1:$1" "${@:2}"
 }
 source /usr/bin/virtualenvwrapper_lazy.sh
+
+codeclimate() {
+	docker run -it --rm -e CODECLIMATE_CODE="$PWD" -v "$PWD":/code -v /run/user/1000/docker.sock:/var/run/docker.sock -v /tmp/cc:/tmp/cc codeclimate/codeclimate "$@"
+}
 
 eval "$(pyenv init -)"
 

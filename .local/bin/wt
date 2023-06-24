@@ -1,0 +1,74 @@
+#!/usr/bin/env zsh
+
+#set -x
+
+__wt_help() {
+	echo "wt lets you switch between your git worktrees with speed.";
+	echo "Usage:";
+	echo "	wt: list out all the git worktrees.";
+	echo "	wt -: switch to the root worktree.";
+	echo "	wt <worktree-name>: switch to that worktree.";
+	echo "	wt help: shows this help message.";
+}
+
+__wt_escape_name() {
+    echo "$1" | sed -e "s/\//_/g";
+}
+
+__wt_get_worktree_path() {
+    local name="$1";
+    local entries="$(git worktree list --porcelain | grep -E "worktree ")";
+    if [[ -n "$name" ]]; then
+        local entries="$(echo "$entries" | grep "$name")";
+    fi;
+    echo "$(echo "$entries" | head -n 1 | cut -d ' ' -f2-)";
+}
+
+__wt_create_worktree() {
+    local branch="$1";
+    local directory="$(__wt_escape_name "$branch")"
+    git worktree add -qf "../$directory" "$branch" && echo "$directory";
+}
+
+__wt_switch_worktree() {
+    local name="$1";
+    local wt_path="$(__wt_get_worktree_path "$name")";
+    if [[ -z "$wt_path" ]]; then
+        false;
+        return;
+    fi;
+    cd "$wt_path";
+    echo "Switched to worktree '$wt_path'.";
+}
+
+__wt_switch_or_create_worktree() {
+    local name="$1";
+    if __wt_switch_worktree "$name" || __wt_switch_worktree "$(__wt_escape_name "$name")"; then
+        return;
+    fi;
+    echo -n "Create worktree for branch '$name' (y/N)? ";
+    read REPLY;
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        return;
+    fi;
+    name="$(__wt_create_worktree "$name")" || return;
+    __wt_switch_worktree "$name";
+}
+
+wt() {
+    local cmd="${1// }";
+    if [[ -z "$cmd" ]]; then
+        git worktree list;
+    elif [[ "$cmd" = "help" ]]; then
+        __wt_help;
+    else
+        __wt_switch_or_create_worktree "$cmd";
+    fi;
+}
+
+if ! [[ $ZSH_EVAL_CONTEXT =~ :file$ ]]; then
+    set -x;
+    wt "$@";
+    # echo "This script must be sourced" >&2;
+    # exit 1;
+fi;
