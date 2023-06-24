@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-exec multilockscreen \
+exec betterlockscreen \
 --lock \
 -- \
 --force-clock \
@@ -8,7 +8,9 @@ exec multilockscreen \
 --wrong-text "" \
 --noinput-text "" \
 --lock-text "" \
+--greeter-text "" \
 --lockfailed-text "" \
+--layout-color 00000000 \
 --inside-color 00000000 \
 --insidever-color 00000000 \
 --insidewrong-color 00000000 \
@@ -21,6 +23,7 @@ exec multilockscreen \
 --ind-pos "960:540" \
 --radius 203 \
 --ring-width 6 \
+--time-align 0 \
 --time-pos "960:200" \
 --time-str "%H:%M" \
 --time-color ffffffff \
