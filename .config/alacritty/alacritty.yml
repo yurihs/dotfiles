@@ -3,7 +3,7 @@ window:
     x: 10
     y: 8
   dynamic_padding: true
-  decorations: none
+  decorations: full
 
 scrolling:
   history: 100000
@@ -20,7 +20,7 @@ font:
     family: Hack Nerd Font
     style: Italic
   bold_italic:
-    family: Hack Nerd FOnt
+    family: Hack Nerd Font
     style: Bold Italic
   size: 10.0
 
@@ -87,6 +87,4 @@ key_bindings:
   - { key: Insert,   mods: Shift,         action: ReceiveChar   }
   - { key: Return,   mods: Alt,           action: ReceiveChar   }
   - { key: Delete,   mods: Control,       chars: "\x1b[3;5~" }
-
-alt_send_esc: true
 
