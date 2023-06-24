@@ -29,7 +29,7 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+Return exec $term
 bindsym $mod+s exec rofi -normal-window -modi ssh -show ssh
-bindsym $mod+d exec rofi -normal-window -modi run -show run
+bindsym $mod+d exec "rofi -normal-window -modi combi -combi-modes 'run,drun' -show combi"
 bindsym $mod+c exec rofi -normal-window -modi calc -show calc -no-show-match -no-sort -calc-command "echo '{result}' | xsel -ib"
 bindsym $mod+Ctrl+l exec $locker
 bindsym Print exec --no-startup-id flameshot gui

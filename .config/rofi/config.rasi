@@ -8,11 +8,12 @@ configuration {
 	kb-move-end: "End";
 	kb-row-first: "";
 	kb-row-last: "";
-	width: 30;
-	lines: 5;
 }
 
+@theme "/dev/null"
+
 window {
+    width: 30%;
     font: "Hack 12";
     padding: 3;
     background-color: #ebedef;
@@ -47,6 +48,7 @@ message {
 listview {
     background-color: inherit;
     scrollbar: false;
+    lines: 6;
 }
 
 element {
@@ -54,11 +56,15 @@ element {
     text-color: #454a55;
     highlight: bold #000000;
     padding: 6;
-
 }
 
 element selected {
     background-color: #c7cbd1;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
 }
 
 error-message {
