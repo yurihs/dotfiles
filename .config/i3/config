@@ -34,9 +34,6 @@ bindsym $mod+c exec rofi -normal-window -modi calc -show calc -no-show-match -no
 bindsym $mod+Ctrl+l exec $locker
 bindsym Print exec --no-startup-id flameshot gui
 
-# Disregard shortcut for quitting firefox, can't be disabled internally :(
-bindsym Ctrl+q exec true
-
 # Function keys
 # --------------------------------------
 
@@ -47,7 +44,7 @@ bindsym XF86AudioMute exec --no-startup-id pulsey mute > /tmp/xobpipe
 # Layout
 # --------------------------------------
 
-bindsym $mod+Shift+q kill
+bindsym Ctrl+q kill
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
