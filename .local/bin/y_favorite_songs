@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sqlite3
+import sys
+
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, NamedTuple, Optional, Set
+
+DATABASE_PATH = Path.home() / ".local/share/y_favorite_songs/favorite_songs.db"
+
+
+class Song(NamedTuple):
+    file: Optional[str]
+    title: Optional[str]
+    artist: Optional[str]
+    album: Optional[str]
+    albumartist: Optional[str]
+    composer: Optional[str]
+
+
+@dataclass
+class SongStats:
+    favorited_count: int
+    favorited_dates: Set[datetime]
+
+
+def get_current_song() -> Song:
+    fields = Song._fields
+    p = subprocess.run(
+        [
+            "mpc",
+            "current",
+            "-f",
+            "\30".join(f"%{field}%" for field in fields),
+        ],
+        capture_output=True,
+    )
+    p_output = p.stdout.decode("utf-8").removesuffix("\n")
+    metadata = {
+        field: value or None for field, value in zip(fields, p_output.split("\30"))
+    }
+    return Song(**metadata)
+
+
+def open_database() -> sqlite3.Connection:
+    if not DATABASE_PATH.is_file():
+        DATABASE_PATH.parent.mkdir(exist_ok=True)
+
+    conn = sqlite3.connect(DATABASE_PATH)
+    cur = conn.cursor()
+    cur.execute(
+        """ 
+        create table if not exists favorited (
+            file text,
+            title text,
+            artist text,
+            album text,
+            albumartist text,
+            composer text,
+            created_at text
+        )
+    """
+    )
+    conn.commit()
+    return conn
+
+
+def write_song(conn: sqlite3.Connection, song: Song) -> None:
+    cur = conn.cursor()
+    cur.execute(
+        """insert into favorited values (:file, :title, :artist, :album, :albumartist, :composer, :created_at)""",
+        {
+            "file": song.file,
+            "title": song.title,
+            "artist": song.artist,
+            "album": song.album,
+            "albumartist": song.albumartist,
+            "composer": song.composer,
+            "created_at": datetime.now().isoformat(timespec="seconds"),
+        },
+    )
+    conn.commit()
+
+
+def read_favorited_songs(conn: sqlite3.Connection) -> Dict[Song, SongStats]:
+    cur = conn.cursor()
+    results = cur.execute(
+        """select file, title, artist, album, albumartist, composer, created_at from favorited"""
+    )
+    favorited: Dict[Song, SongStats] = defaultdict(
+        lambda: SongStats(favorited_count=0, favorited_dates=set())
+    )
+    for row in results:
+        song = Song(
+            file=row[0],
+            title=row[1],
+            artist=row[2],
+            album=row[3],
+            albumartist=row[4],
+            composer=row[5],
+        )
+        favorited[song].favorited_count += 1
+        favorited[song].favorited_dates.add(datetime.fromisoformat(row[6]))
+    return favorited
+
+
+def read_song_favorite_count(conn: sqlite3.Connection, song: Song) -> int:
+    cur = conn.cursor()
+    cur.execute(
+        """select count(file) from favorited where file=:file""",
+        {"file": song.file},
+    )
+    return int(cur.fetchone()[0])
+
+
+def notify(title: str, message: str) -> None:
+    subprocess.run(["notify-send", title, message])
+
+
+def ordinal(n: int) -> str:
+    return f'{n}{"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4]}'
+
+
+def do_list() -> bool:
+    conn = open_database()
+    favorited = read_favorited_songs(conn)
+    for song, stats in sorted(
+        favorited.items(), key=lambda item: item[1].favorited_count, reverse=True
+    ):
+        print(f"{stats.favorited_count:>4} {song.title}")
+    return True
+
+
+def do_write() -> bool:
+    try:
+        conn = open_database()
+    except Exception:
+        notify("Failed to favorite song", "Could not open database connection.")
+        return False
+
+    try:
+        current_song = get_current_song()
+    except Exception:
+        notify("Failed to favorite song", "Could not get current song.")
+        return False
+
+    favorite_count = 0
+    try:
+        favorite_count = read_song_favorite_count(conn, current_song)
+    except Exception:
+        pass
+
+    try:
+        write_song(conn, current_song)
+    except Exception:
+        notify("Failed to favorite song", "Could not write to database.")
+        return False
+
+    message_lines = [
+        current_song.title or "<No title>",
+        f"({ordinal(favorite_count + 1)} time{'!' if favorite_count == 0 else ''})",
+    ]
+    notify("Favorited song", "\n".join(message_lines))
+    return True
+
+
+def do_read() -> bool:
+    conn = open_database()
+    current_song = get_current_song()
+    favorite_count = read_song_favorite_count(conn, current_song)
+    print(favorite_count)
+    return True
+
+
+def print_usage() -> None:
+    name = Path(sys.argv[0]).name
+    print(f"Usage: {name} (list|write|read)", file=sys.stderr)
+
+
+def main() -> None:
+    commands = {
+        "list": do_list,
+        "write": do_write,
+        "read": do_read,
+    }
+
+    command = sys.argv[1] if len(sys.argv) >= 2 else None
+    if command not in commands:
+        print("Invalid command.", file=sys.stderr)
+        print_usage()
+        sys.exit(1)
+
+    if not commands[command]():
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

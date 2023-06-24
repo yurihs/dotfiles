@@ -1,0 +1,17 @@
+#!/bin/bash
+file="$1"
+
+if [ -z "$file" ]; then
+	echo "Usage: $0 <file>" 1>&2;
+	exit 1;
+fi;
+
+if [ -e "$file.par2" ]; then
+	echo "Parity file already exists for \"$file\".";
+	exit;
+fi;
+
+echo "Creating parity file for \"$file\"."
+par2create -q -n1 -r5 "$file"
+rm "$file".par2
+mv "$file".vol*par2 "$file".par2

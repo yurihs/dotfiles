@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+
+OUTPUT_LEFT="DisplayPort-0"
+OUTPUT_RIGHT="HDMI-A-0"
+
+function is_left_output_on() {
+    xrandr -q | grep "$OUTPUT_LEFT" | grep -q 1920x1080;
+}
+
+if is_left_output_on; then
+    xrandr --output "$OUTPUT_LEFT" --off;
+    echo "Xft.dpi: 144" | xrdb -override -;
+else
+    xrandr --output "$OUTPUT_LEFT" --auto;
+    xrandr --output "$OUTPUT_RIGHT" --right-of "$OUTPUT_LEFT";
+    echo "Xft.dpi: 96" | xrdb -override -;
+    $HOME/.config/polybar/launch.sh >/dev/null 2>&1;
+fi;
+
+
