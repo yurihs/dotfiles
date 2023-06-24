@@ -55,7 +55,7 @@ xrandr --output DVI-D-0 --mode 1440x900 --pos 1920x180
 
 # No tearing please
 xrandr --output DisplayPort-0 --set TearFree on
-xrandr --output DVI-D-0 --set TearFree on
+xrandr --output HDMI-A-0 --set TearFree on
 
 # Start ssh-agent
 eval $(ssh-agent)
