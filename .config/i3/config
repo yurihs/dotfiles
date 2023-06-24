@@ -184,12 +184,12 @@ for_window [title="^Android Emulator.+:[0-9]+$"] floating enable
 
 exec --no-startup-id dunst
 exec --no-startup-id udiskie
+exec --no-startup-id easyeffects --gapplication-service
+exec --no-startup-id redshift-gtk
+exec --no-startup-id solaar --window=hide
 
 # Brightness bar
 exec --no-startup-id mkfifo /tmp/xobpipe; tail -f /tmp/xobpipe | xob
-
-# Break timer
-exec --no-startup-id stretchly
 
 # Restore wallpaper
 exec --no-startup-id ~/.fehgb
