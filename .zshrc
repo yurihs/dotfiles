@@ -107,3 +107,6 @@ codeclimate() {
 # Init pyenv (part 2)
 eval "$(pyenv init -)"
 
+# Init nodenv
+eval "$(nodenv init -)"
+
