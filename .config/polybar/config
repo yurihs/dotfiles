@@ -1,9 +1,9 @@
 [colors]
-background = #272822
-background-alt = #444
+background = #14151C
+background-alt = #1F1F2C
 foreground = #f9f8f5
-foreground-alt = #f9f8f5
-primary = #66d9ef
+foreground-alt = #aeaeac
+primary = #3785C0
 secondary = #a1efe4
 alert = #f92672
 good = #a6e2ee
@@ -124,32 +124,11 @@ label = %gb_used% used
 type = internal/date
 interval = 5
 
-date =
-date-alt = "%Y-%m-%d "
-
+date = %Y-%m-%d
 time = %H:%M
-time-alt = %H:%M:%S
 
-label = %date%%time%
+label = "%date% %time%"
 label-font = 3
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-use-ui-max = false
-
-format-volume = %{A3:pavucontrol & disown:}<label-volume>%{A}
-
-label-volume = %percentage:3%%
-
-format-muted = %{A3:pavucontrol & disown:}<label-muted>%{A}
-
-label-muted = "mute"
-label-muted-foreground = #666
-
-label-volume-font = 3
-label-muted-font = 3
-
 
 [module/cpu_temperature]
 type = internal/temperature
@@ -182,3 +161,12 @@ label-warn = GPU %temperature-c%
 
 [settings]
 screenchange-reload = true
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+interval = 5
+format-paused-foreground = ${colors.foreground-alt}
+label-song=%{A1:y_favorite_songs write:}  %{A}%{A1:mpc toggle:}%{A3:#mpd.next:}%artist% - %album% - %title%%{A}%{A}
+

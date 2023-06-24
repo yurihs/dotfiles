@@ -154,12 +154,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Styles
 # ======================================
 
-gaps inner 6
-smart_gaps on
 hide_edge_borders smart
 
-default_border pixel 0
-default_floating_border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
 
 # Firefox PiP mode
 for_window [window_role="PictureInPicture"] border none
@@ -178,6 +176,8 @@ for_window [class="flameshot" title="Open With"] floating enable
 for_window [class="flameshot" title="flameshot"] sticky enable
 
 for_window [class="Rofi"] floating enable
+
+for_window [title="^Android Emulator.+:[0-9]+$"] floating enable
 
 # Startup
 # ======================================
